@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demo';
+  items = [
+    { icon: 'person', name: 'About' },
+    { icon: 'settings', name: 'Services' },
+    { icon: 'local_phone', name: 'Contact' }
+  ];
 }
