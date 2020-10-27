@@ -28,18 +28,14 @@
 <!--        </div>-->
 <!--      </mat-list-item>-->
 
-      <mat-list-item *ngFor="let item of items; let i = index;" [routerLink]="3" routerLinkActive="active">
-        <h1>{{i}}</h1>
-<!--        <mat-icon mat-list-icon>local_phone</mat-icon>-->
-<!--        <div fxFlex="10"></div>-->
-<!--        <div *ngIf="sidenavWidth > 6" class="sidenav-item">-->
-<!--          <h5 class="lead">Contact</h5>-->
-<!--        </div>-->
+      <mat-list-item *ngFor="let item of items; let i = index;" [routerLink]="i" routerLinkActive="active">
+       <mat-icon mat-list-icon class="icon" [ngStyle]="{color: iconColor}">{{item.icon}}</mat-icon>
+       <div fxFlex="10"></div>
+       <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+         <h5 class="lead" >{{item.name}}</h5>
+       </div>
       </mat-list-item>
-
-
     </mat-nav-list>
-
   </mat-sidenav>
 
 <!--  <div class="example-sidenav-content">-->

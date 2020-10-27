@@ -9,6 +9,8 @@ export class SidenavComponent implements OnInit {
   @Input() sidenavWidthMax: any;
   @Input() sidenavWidthMin: any;
   @Input() items: any;
+  @Input() iconColor: any;
+  @Input() iconBackgroundColor: any;
   sidenavWidth = 4;
   ngStyle: string;
   constructor() {
