@@ -1,33 +1,8 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav  mode="side" class="example-sidenav" [ngStyle]="{ 'width.em': sidenavWidth }" opened="true" (mouseenter)="increase()"
                (mouseleave)="decrease()">
-<!--    <div class="logomain">Logo Part</div>-->
-    <mat-nav-list>
 
-<!--      <mat-list-item routerLink="1" routerLinkActive="active" >-->
-<!--        <mat-icon mat-list-icon>person</mat-icon>-->
-<!--        <div fxFlex="10"></div>-->
-<!--        <div *ngIf="sidenavWidth > 6" class="sidenav-item">-->
-<!--          <h5 class="lead">About</h5>-->
-<!--        </div>-->
-<!--      </mat-list-item>-->
-
-<!--      <mat-list-item routerLink="2" routerLinkActive="active">-->
-<!--        <mat-icon mat-list-icon>settings</mat-icon>-->
-<!--        <div fxFlex="10"></div>-->
-<!--        <div *ngIf="sidenavWidth > 6" class="sidenav-item">-->
-<!--          <h5 class="lead">Services</h5>-->
-<!--        </div>-->
-<!--      </mat-list-item>-->
-
-<!--      <mat-list-item routerLink="3" routerLinkActive="active">-->
-<!--        <mat-icon mat-list-icon>local_phone</mat-icon>-->
-<!--        <div fxFlex="10"></div>-->
-<!--        <div *ngIf="sidenavWidth > 6" class="sidenav-item">-->
-<!--          <h5 class="lead">Contact</h5>-->
-<!--        </div>-->
-<!--      </mat-list-item>-->
-
+    <!-- <mat-nav-list>
       <mat-list-item *ngFor="let item of items; let i = index;" [routerLink]="i" routerLinkActive="active">
        <mat-icon mat-list-icon class="icon" [ngStyle]="{color: iconColor}">{{item.icon}}</mat-icon>
        <div fxFlex="10"></div>
@@ -35,8 +10,37 @@
          <h5 class="lead" >{{item.name}}</h5>
        </div>
       </mat-list-item>
-    </mat-nav-list>
+    </mat-nav-list> -->
+
+    <cdk-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- This is the tree node template for leaf nodes -->
+      <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="example-tree-node2">
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <div>
+          <!-- <button mat-icon-button disabled></button> -->
+          <mat-icon class="iconItem">{{node.icon}}</mat-icon>
+        </div>
+        <div class="node_name">{{node.name}}</div>
+      </cdk-nested-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasChild" class="example-tree-node">
+        <div class="iconItemContainer"><mat-icon class="iconItem"> 	&nbsp;&nbsp;{{node.icon}}</mat-icon></div>
+        <div class="nameItem">{{node.name}}</div>
+        <div class="expandableItem">
+            <button mat-icon-button class="toggleBtn" [attr.aria-label]="'Toggle ' + node.name" cdkTreeNodeToggle>
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+        </div>
+        <div [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+          <ng-container cdkTreeNodeOutlet></ng-container>
+        </div>
+      </cdk-nested-tree-node>
+    </cdk-tree>
   </mat-sidenav>
+  
+
 
 <!--  <div class="example-sidenav-content">-->
 <!--    &lt;!&ndash; <router-outlet></router-outlet> &ndash;&gt;-->

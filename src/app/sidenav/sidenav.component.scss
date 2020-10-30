@@ -1,0 +1,53 @@
+.example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+//   .example-tree-node {
+//     display: block;
+//   }
+  
+//   cdk-nested-tree-node.example-tree-node cdk-nested-tree-node.cdk-tree-node cdk-nested-tree-node {
+//     height: 40px;
+//     position: relative;
+//     width: auto;
+//   }
+
+//   button.toggleBtn {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: flex-end;
+//   }
+
+
+
+  cdk-nested-tree-node.cdk-tree-node  {
+    display: grid;
+    grid-template-columns: 35px auto 50px;
+    grid-column-gap: 20px;
+    grid-row-gap: 1px;
+    justify-items: stretch;
+    align-items: center;
+ }
+
+ cdk-nested-tree-node.example-tree-node2 {
+    display: grid;
+    grid-template-columns: 50px auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 1px;
+    justify-items: center;
+    align-items: center;
+ }
+
+ mat-sidenav.example-sidenav {
+     overflow: hidden;
+ }
+
+ div.node_name {
+     height: 40px;
+ }
