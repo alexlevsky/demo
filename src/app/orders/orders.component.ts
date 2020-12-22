@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
+import * as BookActions from '../books/actions';
+import { Store } from '@ngrx/store';
+import { RootStoreModule } from '../books/root-store.module';
 
 @Component({
   selector: 'app-orders',
@@ -21,11 +24,14 @@ export class OrdersComponent implements OnInit {
   ];
 
   coffeeOrder = [];
-  constructor(public firebase: FirebaseService) {}
+  constructor(public firebase: FirebaseService, public store$: Store<RootStoreModule>) {}
 
   ngOnInit() {}
 
-  addCoffee = coffee => this.coffeeOrder.push(coffee);
+  addCoffee = coffee => {
+    this.coffeeOrder.push(coffee);
+    this.store$.dispatch(BookActions.BooksApiActions.createBook({ name: this.firebase.form.value.customerName }));
+   };
 
   removeCoffee = coffee => {
     let index = this.coffeeOrder.indexOf(coffee);

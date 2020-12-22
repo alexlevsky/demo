@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { FirebaseService } from './services/firebase.service';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrdersComponent } from './orders/orders.component';
+import { RootStoreModule } from './books/root-store.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { OrdersComponent } from './orders/orders.component';
    ],
   imports: [
     BrowserModule,
+    RootStoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AppRoutingModule,
